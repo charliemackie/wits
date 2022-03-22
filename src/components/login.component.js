@@ -72,6 +72,11 @@ export default function Login() {
         <div className="button-container">
           <input type="submit" />
         </div>
+        <div>
+          <Link to={"/form"}>
+            <Button variant="contained">Next</Button>
+          </Link>
+        </div>
       </form>
     </div>
   );
