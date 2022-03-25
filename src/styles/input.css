@@ -1,16 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
-.logo{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 110%;
-  height:auto;
+  height: auto;
 }
-h1{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size:2rem;
+h1 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
 }
 app {
   display: flex;
@@ -19,7 +24,7 @@ app {
   flex-direction: column;
   gap: 20px;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 input[type="text"],
@@ -40,7 +45,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background: #E13727;
+  background: #e13727;
 }
 
 .button-container {
@@ -75,11 +80,10 @@ input[type="submit"]:hover {
   gap: 8px;
   margin: 10px;
 }
-*{
-    font-family: 'Poppins', sans-serif;
-
+* {
+  font-family: "Poppins", sans-serif;
 }
-.supportwidget{
-    margin-top: 0.75rem;
-    text-align: center;
+.supportwidget {
+  margin-top: 0.75rem;
+  text-align: center;
 }

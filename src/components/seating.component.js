@@ -7,6 +7,7 @@ export default function Seating() {
 
     return (
         <Grid
+            className="p-3"
             container
             spacing={0}
             direction="column"

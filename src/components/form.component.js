@@ -43,7 +43,7 @@ export default function Form() {
 
   return (
     <form>
-      <div>
+      <div className="p-5">
         <Grid
           container
           spacing={5}
@@ -167,31 +167,49 @@ export default function Form() {
             <div>
               <FormGroup>
                 <FormLabel component="legend">
-                  What noise level would you like to be in during your flight?{" "}
-                  <strong>Select one.</strong>
+                  What's your noise preference?{" "}
+                  <strong>Multiple can be selected.</strong>
                 </FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="noise-level"
-                  checked={value}
-                  onChange={handleChange}
-                >
-                  <FormControlLabel
-                    value="silence"
-                    control={<Radio />}
-                    label="Silence"
-                  />
-                  <FormControlLabel
-                    value="conversational"
-                    control={<Radio />}
-                    label="Conversational"
-                  />
-                  <FormControlLabel
-                    value="lively"
-                    control={<Radio />}
-                    label="Lively"
-                  />
-                </RadioGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      isChecked={isAllergicNutsChecked}
+                      onChange={setAllergicNutsChecked}
+                      name="Nuts"
+                    />
+                  }
+                  label="Nuts"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      isChecked={isAllergicMilkChecked}
+                      onChange={setAllergicMilkChecked}
+                      name="Milk"
+                    />
+                  }
+                  label="Milk"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      isChecked={isAllergicSeafoodChecked}
+                      onChange={setAllergicSeafoodChecked}
+                      name="Seafood"
+                    />
+                  }
+                  label="Seafood"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      isChecked={isAllergicNoneChecked}
+                      onChange={setAllergicNoneChecked}
+                      name="None"
+                    />
+                  }
+                  label="None"
+                />
               </FormGroup>
             </div>
           </Grid>
