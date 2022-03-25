@@ -10,37 +10,119 @@ import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import TextField from "@mui/material/TextField";
+import axios from 'axios';
 
 export default function Form() {
-    const [isSnackNutsChecked, setSnackNutsChecked] = React.useState(false);
-    const [isSnackMilkChecked, setSnackMilkChecked] = React.useState(false);
-    const [isSnackSeafoodChecked, setSnackSeafoodChecked] = React.useState(false);
-    const [isSnackNoneChecked, setSnackNoneChecked] = React.useState(false);
-    const [isSnackOtherChecked, setSnackOtherChecked] = React.useState(false);
 
-    const [isAllergicNutsChecked, setAllergicNutsChecked] = React.useState(false);
-    const [isAllergicMilkChecked, setAllergicMilkChecked] =
+  // user
+  var Snack = '';
+  var Allergy = '';
+  var Noise = '';
+  var Light = '';
+
+  // snacks
+  const [isSnackNutsChecked, setSnackNutsChecked] = React.useState(false);
+  const [isSnackMilkChecked, setSnackMilkChecked] = React.useState(false);
+  const [isSnackSeafoodChecked, setSnackSeafoodChecked] = React.useState(false);
+  const [isSnackNoneChecked, setSnackNoneChecked] = React.useState(false);
+  const [isSnackOtherChecked, setSnackOtherChecked] = React.useState(false);
+
+  if (isSnackNutsChecked) {
+    Snack = 'Nuts'
+  }
+  if (isSnackMilkChecked) {
+    Snack = 'Milk'
+  }
+  if (isSnackSeafoodChecked) {
+    Snack = 'Seafood'
+  }
+  if (isSnackNoneChecked) {
+    Snack = 'None'
+  }
+  if (isSnackOtherChecked) {
+    Snack = 'Other'
+  }
+
+  // allergies
+  const [isAllergicNutsChecked, setAllergicNutsChecked] = React.useState(false);
+  const [isAllergicMilkChecked, setAllergicMilkChecked] =
+    React.useState(false);
+  const [isAllergicSeafoodChecked, setAllergicSeafoodChecked] =
+    React.useState(false);
+  const [isAllergicNoneChecked, setAllergicNoneChecked] =
+    React.useState(false);
+
+  if (isAllergicNutsChecked) {
+    Allergy = 'Nuts'
+  }
+  if (isAllergicMilkChecked) {
+    Allergy = 'Milk'
+  }
+  if (isAllergicSeafoodChecked) {
+    Allergy = 'Seafood'
+  }
+  if (isAllergicNoneChecked) {
+    Allergy = 'None'
+  }
+
+  // noise
+  const [isSilenceChecked, setSilenceChecked] = React.useState(false);
+  const [isLivelyChecked, setLivelyChecked] =
+    React.useState(false);
+  const [isConversationalChecked, setConversationalChecked] =
+    React.useState(false);
+  
+  if (isSilenceChecked) {
+    Noise = 'Silence'
+  }
+  if (isLivelyChecked) {
+    Noise = 'Lively'
+  }
+  if (isConversationalChecked) {
+    Noise = 'Conversational'
+  }
+  
+  // lights
+  const [isNoLightsChecked, setNoLightsChecked] = React.useState(false);
+  const [isNaturalLightsChecked, setNaturalLightsChecked] = React.useState(false);
+  const [isReadingLightsChecked, setReadingLightsChecked] =
       React.useState(false);
-    const [isAllergicSeafoodChecked, setAllergicSeafoodChecked] =
-      React.useState(false);
-    const [isAllergicNoneChecked, setAllergicNoneChecked] =
-      React.useState(false);
-    
-      const [isNoLightsChecked, setNoLightsChecked] = React.useState(false);
-      const [isNaturalLightsChecked, setNaturalLightsChecked] = React.useState(false);
-      const [isReadingLightsChecked, setReadingLightsChecked] =
-        React.useState(false);
-      const [isWindowOpenChecked, setWindowOpenChecked] = React.useState(false);
+  const [isWindowOpenChecked, setWindowOpenChecked] = React.useState(false);
 
-      const [value, setValue] = React.useState(false);
+  if (isNoLightsChecked) {
+    Light = 'Silence'
+  }
+  if (isNaturalLightsChecked) {
+    Light = 'Lively'
+  }
+  if (isReadingLightsChecked) {
+    Light = 'Reading'
+  }
+  if (isWindowOpenChecked) {
+    Light = 'Conversational'
+  }
 
-      const handleChange = () => {
-        setValue(!value);
-      };
+  const [value, setValue] = React.useState(false);
 
+  const handleChange = () => {
+      setValue(!value);
+    };
+
+  // user ID
+  var ID = Math.floor((Math.random() * 10000) + 1);
+
+  // handle form submission
+  function handleSubmit() {
+    console.log('hey')
+    axios.post('http://localhost:3000/user/add', {
+      ID: ID,
+      Snack: Snack ,
+      Allergy: Allergy,
+      Noise: Noise,
+      Light: Light 
+    })
+  }
       
-    
-
   return (
     <form>
       <div className="p-5">
@@ -163,56 +245,48 @@ export default function Form() {
               </FormGroup>
             </div>
           </Grid>
+
           <Grid item xs={3}>
             <div>
               <FormGroup>
                 <FormLabel component="legend">
                   What's your noise preference?{" "}
-                  <strong>Multiple can be selected.</strong>
+                  <strong>Choose one</strong>
                 </FormLabel>
                 <FormControlLabel
                   control={
                     <Checkbox
-                      isChecked={isAllergicNutsChecked}
-                      onChange={setAllergicNutsChecked}
-                      name="Nuts"
+                      isChecked={isSilenceChecked}
+                      onChange={setSilenceChecked}
+                      name="Silence"
                     />
                   }
-                  label="Nuts"
+                  label="Silence"
                 />
                 <FormControlLabel
                   control={
                     <Checkbox
-                      isChecked={isAllergicMilkChecked}
-                      onChange={setAllergicMilkChecked}
-                      name="Milk"
+                      isChecked={isConversationalChecked}
+                      onChange={setConversationalChecked}
+                      name="Conversational"
                     />
                   }
-                  label="Milk"
+                  label="Conversational"
                 />
                 <FormControlLabel
                   control={
                     <Checkbox
-                      isChecked={isAllergicSeafoodChecked}
-                      onChange={setAllergicSeafoodChecked}
-                      name="Seafood"
+                      isChecked={isLivelyChecked}
+                      onChange={setLivelyChecked}
+                      name="Lively"
                     />
                   }
-                  label="Seafood"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      isChecked={isAllergicNoneChecked}
-                      onChange={setAllergicNoneChecked}
-                      name="None"
-                    />
-                  }
-                  label="None"
+                  label="Lively"
                 />
               </FormGroup>
             </div>
           </Grid>
+
           <Grid item xs={3}>
             <div>
               <FormGroup>
@@ -294,7 +368,7 @@ export default function Form() {
                 </b>
               </label>
             </div>
-            <div>
+            <div className="pt-3">
               <TextField
                 id="outlined-basic"
                 label="Enter email here"
@@ -304,8 +378,8 @@ export default function Form() {
           </Grid>
           <Grid item xs={3}>
             <div>
-              <Link to={"/questions"}>
-                <Button variant="contained">Review</Button>
+              <Link to={"/seating/:id"}>
+                <input type="submit" onClick={handleSubmit}/>
               </Link>
             </div>
           </Grid>

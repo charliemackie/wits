@@ -2,27 +2,34 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
 
-// get all orders
+// get all users
 router.route('/').get((req, res) => {
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-// add a new order
+// get specific user
+router.route('/:id').get((req, res) => {
+  User.findOne({ID: req.params.id})
+    .then(users => res.json(users))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// add a new user
 router.route('/add').post((req, res) => {
-  const User_Name = req.body.User_Name;
-  const Address = req.body.Address;
+  const ID = req.body.ID;
+  const Snack = req.body.Snack;
   const Allergy = req.body.Allergy;
   const Noise = req.body.Noise;
-  const Lighting = req.body.Lighting;
+  const Light = req.body.Light;
 
   const newOrder = new User({
-      User_Name,
-      Address,
+      ID,
+      Snack,
       Allergy,
       Noise,
-      Lighting
+      Light
   });
 
   newOrder.save()

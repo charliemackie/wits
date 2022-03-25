@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  User_Name: {
+  ID: {
     type: String,
     required: true,
     trim: true,
   },
-  Address: {
+  Snack: {
     type: String,
     required: true,
     trim: true,
@@ -23,7 +23,7 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
-  Lighting: {
+  Light: {
     type: String,
     required: true,
     trim: true,

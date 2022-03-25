@@ -33,7 +33,7 @@ export default function Login() {
                 </div>
                 <div className="button-container">
                 <Link to={"/form"}>
-                <input type="submit" />
+                    <input type="submit" />
                 </Link>
                 </div>
                 <div>
