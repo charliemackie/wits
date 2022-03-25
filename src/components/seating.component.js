@@ -1,32 +1,23 @@
 import React from "react";
-import {Button, Grid} from "@mui/material"
-import {Link} from "react-router-dom"
-
+import axios from "axios";
 
 export default function Seating() {
 
+    const [state, setState] = React.useState({});
+
+    // get the user id that just filled form from url (passed in previous component)
+    const id = window.location.pathname.split('/')[2]
+
+    // get the users data that just filled out form
+    axios.get('http://localhost:3000/user/'+id).then(
+        response => {
+            setState(response.data)
+        }
+    )
+
     return (
-        <Grid
-            className="p-3"
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            style={{ minHeight: '100vh' }}
-            >
-                <Grid item xs={3}>
-                    <div>
-                        <Link to={'/seating'}>
-                            <Button variant="contained">Confirm</Button>
-                        </Link>
-                        <br></br>
-                        <br></br>
-                        <Link to={'/questions'}>
-                            <Button variant="contained">Back</Button>
-                        </Link>
-                    </div>
-                </Grid>   
-            </Grid> 
+        <div>
+            Current user details:
+        </div>
     );
 }

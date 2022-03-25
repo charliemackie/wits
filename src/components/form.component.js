@@ -90,16 +90,16 @@ export default function Form() {
   const [isWindowOpenChecked, setWindowOpenChecked] = React.useState(false);
 
   if (isNoLightsChecked) {
-    Light = 'Silence'
+    Light = 'No'
   }
   if (isNaturalLightsChecked) {
-    Light = 'Lively'
+    Light = 'Natural'
   }
   if (isReadingLightsChecked) {
     Light = 'Reading'
   }
   if (isWindowOpenChecked) {
-    Light = 'Conversational'
+    Light = 'Window'
   }
 
   const [value, setValue] = React.useState(false);
@@ -113,7 +113,7 @@ export default function Form() {
 
   // handle form submission
   function handleSubmit() {
-    console.log('hey')
+    // post the user data that they filled out in the form
     axios.post('http://localhost:3000/user/add', {
       ID: ID,
       Snack: Snack ,
@@ -122,7 +122,7 @@ export default function Form() {
       Light: Light 
     })
   }
-      
+
   return (
     <form>
       <div className="p-5">
@@ -378,7 +378,7 @@ export default function Form() {
           </Grid>
           <Grid item xs={3}>
             <div>
-              <Link to={"/seating/:id"}>
+              <Link to={"/seating/"+ID}>
                 <input type="submit" onClick={handleSubmit}/>
               </Link>
             </div>

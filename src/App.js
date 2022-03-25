@@ -12,8 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />}></Route>
           <Route path="/form" element={<Form />}></Route>
-          <Route path="/questions" element={<Questions />}></Route>
-          <Route path="/seating" element={<Seating />}></Route>
+          <Route path="/seating/:id" element={<Seating />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
